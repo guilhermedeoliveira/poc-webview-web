@@ -1,7 +1,13 @@
 import React, { useState } from "react"
 import { func, number, object, oneOf } from "prop-types"
+import dynamic from "next/dynamic"
 import styled from "styled-components"
-import QrReader from "react-qr-reader"
+
+// Component needs to render in the client side to use browser apis
+const QrReaderNoSSR = dynamic(() => import("react-qr-reader"), {
+  ssr: false,
+  loading: () => <p>Loading camera...</p>,
+})
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +26,6 @@ const Text = styled.p`
   margin-top: 2rem;
 `
 
-// Component needs to render in the client side to use browser apis
 const QrCodeScanner = ({ onScan, onError, facingMode, delay, styles }) => {
   const [qrCodeData, setQrCodeData] = useState(null)
 
@@ -33,7 +38,7 @@ const QrCodeScanner = ({ onScan, onError, facingMode, delay, styles }) => {
 
   return (
     <Wrapper>
-      <QrReader
+      <QrReaderNoSSR
         delay={delay}
         onError={onError}
         onScan={handleScan}
