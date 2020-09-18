@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { func, number, object, oneOf } from "prop-types"
-import dynamic from "next/dynamic"
 import styled from "styled-components"
 import QrReader from "react-qr-reader"
 
@@ -21,8 +20,9 @@ const Text = styled.p`
   margin-top: 2rem;
 `
 
+// Component needs to render in the client side to use browser apis
 const QrCodeScanner = ({ onScan, onError, facingMode, delay, styles }) => {
-  const [qrCodeData, setQrCodeData] = useState("")
+  const [qrCodeData, setQrCodeData] = useState(null)
 
   const handleScan = (data) => {
     if (data) {
@@ -41,7 +41,7 @@ const QrCodeScanner = ({ onScan, onError, facingMode, delay, styles }) => {
         facingMode={facingMode}
       />
 
-      <Text>{qrCodeData ?? "Lendo código..."}</Text>
+      <Text>{qrCodeData ?? "Reading code..."}</Text>
     </Wrapper>
   )
 }
@@ -61,7 +61,4 @@ QrCodeScanner.defaultProps = {
   styles: defaultStyles,
 }
 
-// Component needs to render in the client side to use browser apis
-export default dynamic(() => Promise.resolve(QrCodeScanner), {
-  ssr: false,
-})
+export default QrCodeScanner

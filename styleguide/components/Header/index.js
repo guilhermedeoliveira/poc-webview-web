@@ -30,7 +30,7 @@ const Header = ({ children }) => {
 
   return (
     <Wrapper>
-      <BackWrapper onClick={back} style={{ border: "1px solid red" }}>
+      <BackWrapper onClick={back}>
         <StyledIcon size="2em" />
       </BackWrapper>
 
