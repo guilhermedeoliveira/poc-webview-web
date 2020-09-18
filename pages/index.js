@@ -25,6 +25,11 @@ const Home = () => (
       <Link href="/picture">
         <Anchor>Go take a picture</Anchor>
       </Link>
+
+      <div>
+        <p>Pick images from gallery</p>
+        <input type="file" accept="image/png,image/jpeg,image/gif" />
+      </div>
     </Main>
   </div>
 )
