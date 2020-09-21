@@ -36,6 +36,8 @@ const Home = () => {
         <div>
           <p>Pick images from gallery</p>
           <input type="file" accept="image/png,image/jpeg,image/gif" />
+
+          <button onClick={() => document.showAndroidToast("Hello Android!")} />
         </div>
       </Main>
     </div>
