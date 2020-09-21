@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Link from "next/link"
 import styled from "styled-components"
 
@@ -15,23 +15,31 @@ const Anchor = styled.a`
   color: ${({ theme }) => theme.colors.primary};
 `
 
-const Home = () => (
-  <div>
-    <Header>Home</Header>
+const Home = () => {
+  useEffect(() => {
+    document.showAndroidToast = (toast) => {
+      Android.showToast(toast)
+    }
+  }, [])
 
-    <Main>
-      <p>Do you want to take a picture?</p>
+  return (
+    <div>
+      <Header>Home</Header>
 
-      <Link href="/picture">
-        <Anchor>Take a picture</Anchor>
-      </Link>
+      <Main>
+        <p>Do you want to take a picture?</p>
 
-      <div>
-        <p>Pick images from gallery</p>
-        <input type="file" accept="video/*" capture>
-      </div>
-    </Main>
-  </div>
-)
+        <Link href="/picture">
+          <Anchor>Take a picture</Anchor>
+        </Link>
+
+        <div>
+          <p>Pick images from gallery</p>
+          <input type="file" accept="image/png,image/jpeg,image/gif" />
+        </div>
+      </Main>
+    </div>
+  )
+}
 
 export default Home
