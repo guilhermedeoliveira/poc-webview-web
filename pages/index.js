@@ -23,7 +23,7 @@ const Home = () => (
       <p>Do you want to take a picture?</p>
 
       <Link href="/picture">
-        <Anchor>Go take a picture</Anchor>
+        <Anchor>Take a picture</Anchor>
       </Link>
 
       <div>
