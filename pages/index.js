@@ -28,7 +28,7 @@ const Home = () => (
 
       <div>
         <p>Pick images from gallery</p>
-        <input type="file" accept="image/png,image/jpeg,image/gif" />
+        <input type="file" accept="video/*" capture>
       </div>
     </Main>
   </div>
