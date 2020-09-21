@@ -18,6 +18,10 @@ const Anchor = styled.a`
 const Home = () => {
   useEffect(() => {
     document.showAndroidToast = (toast) => {
+      if (window.webkit) {
+        window.webkit.messageHandlers.showToast.postMessage("Hello, world!")
+      }
+
       Android.showToast(toast)
     }
   }, [])
