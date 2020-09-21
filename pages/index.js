@@ -37,7 +37,9 @@ const Home = () => {
           <p>Pick images from gallery</p>
           <input type="file" accept="image/png,image/jpeg,image/gif" />
 
-          <button onClick={() => document.showAndroidToast("Hello Android!")} />
+          <button onClick={() => document.showAndroidToast("Hello Android!")}>
+            Call native function
+          </button>
         </div>
       </Main>
     </div>
