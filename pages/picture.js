@@ -12,7 +12,7 @@ const Home = () => (
 
     <QrCodeScanner QrCodeScanner onScan={onScanCode} onError={onErrorScanner} />
 
-    <input type="file" accept="image/png,image/jpeg" />
+    <input type="file" accept="image/*;capture=camera" />
   </div>
 )
 
